@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f4ef;
+      color: #222;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #e9e3da;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      height: 200px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Ton Nom</h1>
+  <p>Illustratrice • Autrice de BD</p>
+</header>
+
+<section>
+  <h2>Mes travaux</h2>
+
+  <div class="grid">
+    <div class="card">Illustration 1</div>
+    <div class="card">Illustration 2</div>
+    <div class="card">BD</div>
+    <div class="card">Croquis</div>
+  </div>
+</section>
+
+<section>
+  <h2>À propos</h2>
+  <p>
+    Ici tu peux écrire quelques lignes sur ton univers, tes influences,
+    et ton travail d’illustratrice.
+  </p>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email • Instagram • etc.</p>
+</section>
+
+</body>
+</html>
