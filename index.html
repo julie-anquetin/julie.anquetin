@@ -10,7 +10,6 @@
       background: #f7f4ef;
       color: #222;
     }
-
     header {
       height: 100vh;
       display: flex;
@@ -20,29 +19,35 @@
       text-align: center;
       background: #e9e3da;
     }
-
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
     h1 {
       font-size: 3rem;
       margin: 0;
     }
-
     p {
       font-size: 1.2rem;
       opacity: 0.8;
     }
-
     section {
       padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
     }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
-
     .card {
       background: white;
       height: 200px;
@@ -53,9 +58,7 @@
     }
   </style>
 </head>
-
 <body>
-
 <header>
   <div class="header-content">
     <img src="profil.png" alt="Julie Anquetin" class="profile-pic">
@@ -65,21 +68,8 @@
     </div>
   </div>
 </header>
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%; /* pour une photo ronde, enlève cette ligne si tu veux un carré */
-  object-fit: cover;
-}
 <section>
   <h2>Mes travaux</h2>
-
   <div class="grid">
     <div class="card">Illustration 1</div>
     <div class="card">Illustration 2</div>
@@ -87,19 +77,16 @@
     <div class="card">Croquis</div>
   </div>
 </section>
-
 <section>
   <h2>À propos</h2>
   <p>
     Ici tu peux écrire quelques lignes sur ton univers, tes influences,
-    et ton travail d’illustratrice.
+    et ton travail d'illustratrice.
   </p>
 </section>
-
 <section>
   <h2>Contact</h2>
   <p>Email • Instagram • etc.</p>
 </section>
-
 </body>
 </html>
