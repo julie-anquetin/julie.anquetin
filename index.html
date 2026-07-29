@@ -68,9 +68,150 @@
     display: block;
     border-radius: 8px;
 }
+
+    @media (max-width: 700px) {
+
+    .gallery {
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .projet {
+        margin-bottom: 20px;
+    }
+
+}
+    .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 85%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.lightbox button {
+    position: absolute;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 30px;
+}
+
+.next {
+    right: 30px;
+}
+
+.close {
+    top: 20px;
+    right: 30px;
+}
     
   </style>
 </head>
+  <div class="lightbox" id="lightbox">
+
+    <button class="close">×</button>
+
+    <button class="prev">‹</button>
+
+    <img id="lightbox-img">
+
+    <button class="next">›</button>
+
+</div>
+
+
+<script>
+
+const images = document.querySelectorAll(".gallery-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+let current = 0;
+
+
+images.forEach((img, index) => {
+
+    img.addEventListener("click", () => {
+
+        current = index;
+        showImage();
+
+        lightbox.style.display = "flex";
+
+    });
+
+});
+
+
+function showImage() {
+
+    lightboxImg.src = images[current].src;
+
+}
+
+
+document.querySelector(".next").onclick = () => {
+
+    current++;
+
+    if (current >= images.length) {
+        current = 0;
+    }
+
+    showImage();
+
+};
+
+
+document.querySelector(".prev").onclick = () => {
+
+    current--;
+
+    if (current < 0) {
+        current = images.length - 1;
+    }
+
+    showImage();
+
+};
+
+
+document.querySelector(".close").onclick = () => {
+
+    lightbox.style.display = "none";
+
+};
+
+
+lightbox.onclick = (e) => {
+
+    if (e.target === lightbox) {
+        lightbox.style.display = "none";
+    }
+
+};
+
+
+</script>
 <body>
 <header>
   <div class="header-content">
@@ -85,9 +226,9 @@
 
   <div class="gallery">
 
-    <div class="projet" style="grid-column: span 8;">
-      <img src="bd_planche1.png" alt="Pneu qui roule, n'amasse pas moules">
-    </div>
+   <div class="projet" style="grid-column: span 6;">
+  <img src="bd_planche1.png" alt="Pneu qui roule, n'amasse pas moules" class="gallery-img">
+</div>
 
     <div class="projet" style="grid-column: span 4;">
       <img src="illustration1.jpg" alt="">
