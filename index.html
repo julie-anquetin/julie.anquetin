@@ -37,13 +37,21 @@
       font-size: 1.2rem;
       opacity: 0.8;
     }
-   section {
+  section {
     padding: 80px 40px;
     max-width: 900px;
     margin: auto;
 }
+
+.portfolio-section {
+    max-width: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .gallery {
-    width: min(1600px, 95vw);
+    width: 95vw;
+    max-width: 1600px;
     margin: 0 auto;
 
     display: grid;
@@ -62,7 +70,6 @@
     border-radius: 8px;
 }
     
-    }
   </style>
 </head>
 <body>
@@ -75,7 +82,7 @@
     </div>
   </div>
 </header>
-<section>
+<section class="portfolio-section">
   <h2>Portfolio</h2>
 
   <div class="gallery">
