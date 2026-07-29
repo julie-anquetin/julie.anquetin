@@ -1,282 +1,539 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Dessiner les recherches</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f4ef;
-      color: #222;
-    }
-    header {
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: #e9e3da;
-    }
-    .header-content {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-    .profile-pic {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-    }
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    p {
-      font-size: 1.2rem;
-      opacity: 0.8;
-    }
-  section {
+<meta charset="UTF-8">
+<title>Dessiner les recherches</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f4ef;
+    color: #222;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* HEADER */
+
+header {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #e9e3da;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+
+/* MENU */
+
+nav {
+    margin-top: 30px;
+}
+
+nav a {
+    color: #222;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.1rem;
+}
+
+nav a:hover {
+    opacity: 0.6;
+}
+
+
+/* SECTIONS */
+
+section {
     padding: 80px 40px;
     max-width: 900px;
     margin: auto;
 }
+
 
 .portfolio-section {
     max-width: none;
     width: 100%;
     padding: 80px 0;
 }
+
+
+/* GALERIE */
+
 .gallery {
+
     width: 95vw;
     max-width: 1600px;
+
     margin: 0 auto;
 
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 30px;
+
 }
+
 
 .projet {
     overflow: hidden;
 }
 
+
 .projet img {
+
     width: 100%;
     height: auto;
+
     display: block;
+
     border-radius: 8px;
-}
 
-    @media (max-width: 700px) {
-
-    .gallery {
-        display: block;
-        width: 100%;
-        padding: 0 20px;
-        box-sizing: border-box;
-    }
-
-    .projet {
-        margin-bottom: 20px;
-    }
-
-}
-  
-    
-  </style>
-</head>
-  <div class="lightbox" id="lightbox">
-
-    <button class="close">×</button>
-
-    <button class="prev">‹</button>
-
-    <img id="lightbox-img">
-
-    <button class="next">›</button>
-
-</div>
-
-
-<script>
-
-const images = document.querySelectorAll(".gallery-img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-let current = 0;
-
-
-images.forEach((img, index) => {
-
-    img.addEventListener("click", () => {
-
-        current = index;
-        showImage();
-
-        lightbox.style.display = "flex";
-
-    });
-
-});
-
-
-function showImage() {
-
-    lightboxImg.src = images[current].src;
+    cursor: pointer;
 
 }
 
 
-document.querySelector(".next").onclick = () => {
+/* LIGHTBOX */
 
-    current++;
+.lightbox {
 
-    if (current >= images.length) {
-        current = 0;
-    }
-
-    showImage();
-
-};
-
-
-document.querySelector(".prev").onclick = () => {
-
-    current--;
-
-    if (current < 0) {
-        current = images.length - 1;
-    }
-
-    showImage();
-
-};
-
-
-document.querySelector(".close").onclick = () => {
-
-    lightbox.style.display = "none";
-
-};
-
-
-lightbox.onclick = (e) => {
-
-    if (e.target === lightbox) {
-        lightbox.style.display = "none";
-    }
-
-};
-
-
-</script>
-
-    .lightbox {
     display: none;
+
     position: fixed;
+
     z-index: 1000;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
     background: rgba(0,0,0,0.85);
+
     justify-content: center;
     align-items: center;
+
 }
+
 
 .lightbox img {
+
     max-width: 85%;
     max-height: 90%;
+
     object-fit: contain;
+
 }
 
+
 .lightbox button {
+
     position: absolute;
+
     background: none;
     border: none;
+
     color: white;
+
     font-size: 50px;
+
     cursor: pointer;
+
 }
+
 
 .prev {
     left: 30px;
 }
 
+
 .next {
     right: 30px;
 }
 
+
 .close {
+
     top: 20px;
     right: 30px;
+
 }
-  
+
+
+/* MOBILE */
+
+@media (max-width:700px) {
+
+
+    .header-content {
+
+        flex-direction: column;
+
+    }
+
+
+    .gallery {
+
+        display: block;
+
+        width: 100%;
+
+        padding: 0 20px;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .projet {
+
+        margin-bottom: 20px;
+
+    }
+
+
+}
+
+
+</style>
+
+</head>
+
+
+
 <body>
+
+
 <header>
-  <div class="header-content">
-    <img src="profil.png" alt="Julie Anquetin" class="profile-pic">
-    <div>
-      <h1>Julie Anquetin</h1>
-      <p>Transformer la recherche en histoire</p>
-    </div>
-  </div>
+
+<div class="header-content">
+
+
+<img src="profil.png"
+alt="Julie Anquetin"
+class="profile-pic">
+
+
+<div>
+
+<h1>Julie Anquetin</h1>
+
+<p>Transformer la recherche en histoire</p>
+
+
+<nav>
+
+<a href="#bd">BD</a>
+
+<a href="#illustrations">Illustrations</a>
+
+<a href="#apropos">À propos</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+
+</div>
+
+</div>
+
 </header>
-  
+
+
+
+
+
 <section class="portfolio-section" id="bd">
 
-  <h2>Bande dessinée</h2>
 
-  <div class="gallery">
+<h2>Bande dessinée</h2>
 
-    <div class="projet" style="grid-column: span 6;">
-      <img src="bd_planche1.png"
-           alt="Pneu qui roule, n'amasse pas moules"
-           class="gallery-img">
-    </div>
 
-    <div class="projet" style="grid-column: span 6;">
-      <img src="bd_planche2.png"
-           alt="Planche 2"
-           class="gallery-img">
-    </div>
-     </div>
-    </section>
+<div class="gallery">
 
-  <section class="portfolio-section" id="illustrations">
 
-  <h2>Illustrations</h2>
+<div class="projet" style="grid-column: span 6;">
 
-  <div class="gallery">
+<img src="bd_planche1.png"
+alt="Pneu qui roule, n'amasse pas moules"
+class="gallery-img">
 
-    <div class="projet" style="grid-column: span 4;">
-      <img src="illustration1.jpg"
-           alt="Illustration scientifique"
-           class="gallery-img">
-    </div>
+</div>
 
-    <div class="projet" style="grid-column: span 8;">
-      <img src="illustration2.jpg"
-           alt="Illustration"
-           class="gallery-img">
-    </div>
 
-  </div>
+<div class="projet" style="grid-column: span 6;">
+
+<img src="bd_planche2.png"
+alt="Planche 2"
+class="gallery-img">
+
+</div>
+
+
+</div>
 
 </section>
-  
-<section>
-  <h2>À propos</h2>
-  <p>
-   Docteure en océanographie, j'ai réalisé, au fil de mes travaux, que le plus important à mes yeux était de créer un pont entre la recherche et le grand public. J'ai donc décidé de mettre mes compétences artistiques, acquises par amour du dessin, ainsi que mon esprit de synthèse, peaufiné au cours de mon parcours académique, au service de la recherche et des messages qu'elle est capable de transmettre à toustes.
-  </p>
+
+
+
+
+
+<section class="portfolio-section" id="illustrations">
+
+
+<h2>Illustrations</h2>
+
+
+<div class="gallery">
+
+
+<div class="projet" style="grid-column: span 4;">
+
+<img src="illustration1.jpg"
+alt="Illustration scientifique"
+class="gallery-img">
+
+</div>
+
+
+
+<div class="projet" style="grid-column: span 8;">
+
+<img src="illustration2.jpg"
+alt="Illustration"
+class="gallery-img">
+
+</div>
+
+
+</div>
+
+
 </section>
-<section>
-  <h2>Contact</h2>
-  <p>julie.anquetin@outlook.fr • Instagram • etc.</p>
+
+
+
+
+
+<section id="apropos">
+
+<h2>À propos</h2>
+
+
+<p>
+
+Docteure en océanographie, j'ai réalisé, au fil de mes travaux, que le plus important à mes yeux était de créer un pont entre la recherche et le grand public.
+
+J'ai donc décidé de mettre mes compétences artistiques, acquises par amour du dessin, ainsi que mon esprit de synthèse, peaufiné au cours de mon parcours académique, au service de la recherche et des messages qu'elle est capable de transmettre à toustes.
+
+</p>
+
+
 </section>
+
+
+
+
+
+<section id="contact">
+
+
+<h2>Contact</h2>
+
+
+<p>
+
+julie.anquetin@outlook.fr • Instagram • etc.
+
+</p>
+
+
+</section>
+
+
+
+
+
+<!-- FENETRE IMAGE GRANDE -->
+
+<div class="lightbox" id="lightbox">
+
+
+<button class="close">×</button>
+
+
+<button class="prev">‹</button>
+
+
+<img id="lightbox-img">
+
+
+<button class="next">›</button>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+const images = document.querySelectorAll(".gallery-img");
+
+const lightbox = document.getElementById("lightbox");
+
+const lightboxImg = document.getElementById("lightbox-img");
+
+
+let current = 0;
+
+
+
+images.forEach((img,index)=>{
+
+
+img.addEventListener("click",()=>{
+
+
+current = index;
+
+
+showImage();
+
+
+lightbox.style.display = "flex";
+
+
+});
+
+
+});
+
+
+
+function showImage(){
+
+
+lightboxImg.src = images[current].src;
+
+
+}
+
+
+
+document.querySelector(".next").onclick = ()=>{
+
+
+current++;
+
+
+if(current >= images.length){
+
+current = 0;
+
+}
+
+
+showImage();
+
+
+};
+
+
+
+document.querySelector(".prev").onclick = ()=>{
+
+
+current--;
+
+
+if(current < 0){
+
+current = images.length - 1;
+
+}
+
+
+showImage();
+
+
+};
+
+
+
+document.querySelector(".close").onclick = ()=>{
+
+
+lightbox.style.display = "none";
+
+
+};
+
+
+
+lightbox.onclick = (e)=>{
+
+
+if(e.target === lightbox){
+
+lightbox.style.display = "none";
+
+}
+
+
+};
+
+
+
+document.addEventListener("keydown",(e)=>{
+
+
+if(e.key === "Escape"){
+
+lightbox.style.display = "none";
+
+}
+
+
+});
+
+
+</script>
+
+
+
 </body>
+
 </html>
