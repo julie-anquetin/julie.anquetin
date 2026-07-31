@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Julie Anquetin, docteure en océanographie et illustratrice — bande dessinée et illustrations de vulgarisation scientifique.">
+<title>Julie Anquetin — Dessiner les recherches</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --paper: #faf7f0;
+    --paper-tint: #f2ede1;
+    --ink: #1c2b28;
+    --ink-soft: #4a5854;
+    --abyss: #163a3b;
+    --abyss-light: #2f6660;
+    --foam: #8fe3c2;
+    --sand: #d9cfba;
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Work Sans', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+}
+
+html { scroll-behavior: smooth; }
+
+a { color: inherit; }
+
+::selection { background: var(--foam); color: var(--ink); }
+
+:focus-visible {
+    outline: 2px solid var(--abyss-light);
+    outline-offset: 3px;
+}
+
+
+/* HEADER */
+
+header {
+    position: relative;
+    background: linear-gradient(135deg, var(--abyss) 0%, var(--abyss-light) 100%);
+    color: var(--paper);
+    padding: 90px 40px 130px;
+    overflow: hidden;
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.profile-pic {
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.header-text {
+    text-align: left;
+}
+
+h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+}
+
+.tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.3rem;
+    opacity: 0.85;
+    margin: 0;
+}
+
+.wave-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    display: block;
+}
+
+
+/* NAV */
+
+.intro-links {
+    max-width: 700px;
+    margin: -46px auto 0;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 20px;
+}
+
+.intro-links a {
+    background: var(--paper);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    padding: 14px 28px;
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(22, 58, 59, 0.12);
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.intro-links a:hover,
+.intro-links a:focus-visible {
+    background: var(--abyss);
+    color: var(--foam);
+    transform: translateY(-2px);
+}
+
+
+/* SECTIONS */
+
+section {
+    padding: 90px 40px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.portfolio-section {
+    max-width: none;
+    width: 100%;
+    padding: 90px 40px;
+    box-sizing: border-box;
+}
+
+.portfolio-section:nth-of-type(even) {
+    background: var(--paper-tint);
+}
+
+.section-title {
+    max-width: 1600px;
+    margin: 0 auto 40px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+}
+
+
+/* GALERIE — mosaïque (masonry) : les images gardent leur propre format */
+
+.gallery {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    column-count: 3;
+    column-gap: 30px;
+}
+
+.projet {
+    margin: 0 0 30px;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+}
+
+.projet img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.projet:hover img {
+    transform: scale(1.015);
+    box-shadow: 0 12px 30px rgba(22, 58, 59, 0.18);
+}
+
+.projet figcaption {
+    margin-top: 12px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    font-style: italic;
+}
+
+
+/* A PROPOS */
+
+#apropos p {
+    padding-left: 24px;
+    border-left: 1px solid var(--abyss-light);
+}
+
+
+/* CONTACT */
+
+#contact p a,
+#contact p {
+    font-size: 1.05rem;
+}
+
+#contact p a {
+    text-decoration: underline;
+    text-decoration-color: var(--foam);
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+#contact p a:hover,
+#contact p a:focus-visible {
+    color: var(--abyss-light);
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-row p {
+    margin: 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: var(--abyss);
+    background: var(--paper-tint);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a svg {
+    width: 22px;
+    height: 22px;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+    background: var(--abyss);
+    color: var(--foam);
+    transform: translateY(-2px);
+}
+
+
+/* LIGHTBOX */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 26, 25, 0.92);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lightbox img {
+    max-width: 85%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.lightbox figcaption {
+    color: var(--paper);
+    opacity: 0.75;
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.lightbox button {
+    position: absolute;
+    background: none;
+    border: none;
+    color: var(--paper);
+    font-size: 46px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox button:hover,
+.lightbox button:focus-visible {
+    color: var(--foam);
+}
+
+.prev { left: 30px; }
+.next { right: 30px; }
+
+.close {
+    top: 24px;
+    right: 30px;
+    transform: none;
+    font-size: 38px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 1000px) and (min-width: 701px) {
+    .gallery { column-count: 2; }
+}
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 60px 24px 110px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .header-text { text-align: center; }
+
+    .profile-pic {
+        width: 160px;
+        height: 160px;
+    }
+
+    .intro-links {
+        margin-top: -40px;
+        flex-wrap: wrap;
+    }
+
+    .gallery {
+        column-count: 1;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .projet { margin-bottom: 34px; }
+
+    section, .portfolio-section { padding: 60px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    html { scroll-behavior: auto; }
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <img src="profil.png" alt="Julie Anquetin" class="profile-pic">
+
+        <div class="header-text">
+            <h1>Julie Anquetin</h1>
+            <p class="tagline">Transformer la recherche en histoire</p>
+        </div>
+
+    </div>
+
+    <svg class="wave-divider" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,50 C240,100 480,0 720,25 C960,50 1200,100 1440,50 L1440,100 L0,100 Z" fill="var(--paper)"></path>
+    </svg>
+
+</header>
+
+
+<nav class="intro-links" id="portfolio">
+    <a href="#bd">Bande dessinée</a>
+    <a href="#illustrations">Illustrations</a>
+</nav>
+
+
+<section class="portfolio-section" id="bd">
+
+    <h2 class="section-title">Bande dessinée</h2>
+
+    <div class="gallery">
+
+        <figure class="projet">
+            <img src="bd_planche1.png" alt="Pneu qui roule, n'amasse pas moules" class="gallery-img">
+            <figcaption>Pneu qui roule, n'amasse pas moules</figcaption>
+        </figure>
+
+        <figure class="projet">
+            <img src="bd_planche2.png" alt="Planche 2" class="gallery-img">
+            <figcaption>Planche 2</figcaption>
+        </figure>
+
+    </div>
+
+</section>
+
+
+<section class="portfolio-section" id="illustrations">
+
+    <h2 class="section-title">Illustrations</h2>
+
+    <div class="gallery">
+
+        <figure class="projet">
+            <img src="illustration1.jpg" alt="Illustration scientifique" class="gallery-img">
+            <figcaption>Illustration scientifique</figcaption>
+        </figure>
+
+        <figure class="projet">
+            <img src="illustration2.jpg" alt="Illustration" class="gallery-img">
+            <figcaption>Illustration</figcaption>
+        </figure>
+
+    </div>
+
+</section>
+
+
+<section id="apropos">
+
+    <h2 style="font-family: var(--font-display); font-weight: 500; font-size: 1.9rem; margin-top: 0;">À propos</h2>
+
+    <p>
+    Docteure en océanographie, j'ai réalisé, au fil de mes travaux, que le plus important à mes yeux était de créer un pont entre la recherche et le grand public.
+    </p>
+
+    <p>
+    J'ai donc décidé de mettre mes compétences artistiques, acquises par amour du dessin, ainsi que mon esprit de synthèse, peaufiné au cours de mon parcours académique, au service de la recherche et des messages qu'elle est capable de transmettre à toustes.
+    </p>
+
+    <p>
+    Mon objectif est de transformer les recherches de tous domaines par des histoires dessinées ou des illustrations ludiques !
+    </p>
+
+</section>
+
+
+<section id="contact">
+    <h2 style="font-family: var(--font-display); font-weight: 500; font-size: 1.9rem; margin-top: 0;">Contact</h2>
+    <p>Des envies de projet ? N'hésitez pas à me contacter !</p>
+    <div class="contact-row">
+
+        <p><a href="mailto:julie.anquetin@outlook.fr">julie.anquetin@outlook.fr</a></p>
+
+        <div class="social-links">
+
+            <a href="https://www.instagram.com/julie.anquetin/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.6"/>
+                    <circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="1.6"/>
+                    <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/>
+                </svg>
+            </a>
+
+            <a href="https://www.linkedin.com/in/julie-anquetin-5193b31b7/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.6"/>
+                    <circle cx="8" cy="8.2" r="1.3" fill="currentColor"/>
+                    <rect x="6.9" y="11" width="2.2" height="7.3" fill="currentColor"/>
+                    <path d="M11.8 11h2.2v1.15c.55-.85 1.5-1.35 2.6-1.35 2 0 2.9 1.3 2.9 3.6v4.9h-2.2v-4.4c0-1.1-.4-1.85-1.4-1.85-.75 0-1.2.5-1.4 1-.07.17-.09.4-.09.65v4.6h-2.2V11z" fill="currentColor"/>
+                </svg>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="lightbox" id="lightbox">
+    <button class="close">×</button>
+    <button class="prev">‹</button>
+    <img id="lightbox-img">
+    <button class="next">›</button>
+    <figcaption id="lightbox-caption"></figcaption>
+</div>
+
+
+<script>
+
+const images = document.querySelectorAll(".gallery-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxCaption = document.getElementById("lightbox-caption");
+
+let current = 0;
+
+images.forEach((img, index) => {
+    img.onclick = () => {
+        current = index;
+        showImage();
+        lightbox.style.display = "flex";
+    };
+});
+
+function showImage() {
+    lightboxImg.src = images[current].src;
+    lightboxCaption.textContent = images[current].alt;
+}
+
+document.querySelector(".next").onclick = () => {
+    current++;
+    if (current >= images.length) { current = 0; }
+    showImage();
+};
+
+document.querySelector(".prev").onclick = () => {
+    current--;
+    if (current < 0) { current = images.length - 1; }
+    showImage();
+};
+
+document.querySelector(".close").onclick = () => {
+    lightbox.style.display = "none";
+};
+
+lightbox.onclick = (e) => {
+    if (e.target === lightbox) {
+        lightbox.style.display = "none";
+    }
+};
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        lightbox.style.display = "none";
+    }
+});
+
+</script>
+
+</body>
+
+</html>
